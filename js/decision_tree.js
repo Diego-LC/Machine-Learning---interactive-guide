@@ -9,26 +9,37 @@ document.addEventListener('DOMContentLoaded', () => {
 function renderSimpleDecisionTreeDiagram(selectedPath = []) {
     const container = document.getElementById('diagrama-arbol');
     container.innerHTML = `
-        <h4 style="margin-bottom:1.2em;">Diagrama Interactivo: <span style="color:#38e4ae">¿Fruta comestible?</span></h4>
-        <div style="display:flex;justify-content:center;align-items:center;gap:2em;flex-wrap:wrap;">
-            <div id="tree-viz"></div>
-            <form id="fruit-form" style="display:flex;flex-direction:column;gap:1.2em;align-items:flex-start;min-width:220px;background:#f7f9fb;border-radius:14px;padding:1.2em 1.5em;box-shadow:0 2px 12px rgba(79,140,255,0.07);">
-                <label style="font-weight:600;">Color:
-                    <select id="fruit-color" style="margin-left:0.5em;">
-                        <option value="verde">Verde</option>
-                        <option value="rojo">Rojo</option>
-                        <option value="amarillo">Amarillo</option>
-                    </select>
-                </label>
-                <label style="font-weight:600;">Tamaño:
-                    <select id="fruit-size" style="margin-left:0.5em;">
-                        <option value="grande">Grande</option>
-                        <option value="pequeño">Pequeño</option>
-                    </select>
-                </label>
-                <button type="submit" style="font-weight:600;">Clasificar</button>
-                <div id="resultado-fruta" style="margin:0.7em 0 0 0;font-size:1.15em;font-weight:bold;"></div>
-            </form>
+        <div class="diagram">
+            <h4 style="margin-bottom:1.2em;">Diagrama Interactivo: <span style="color:#38e4ae">¿Fruta comestible?</span></h4>
+            <div style="display:flex;justify-content:center;align-items:center;gap:2em;flex-wrap:wrap;">
+                <div id="tree-viz"></div>
+                <form id="fruit-form" class="form-fruta">
+                    <div class="grupo-opciones">
+                        <label class="label-grupo">Color fruta:</label>
+                        <div class="opciones-color">
+                            <input type="radio" name="fruit-color" id="color-verde" value="verde" checked>
+                            <label for="color-verde" class="color-cuadro verde"></label>
+                            <input type="radio" name="fruit-color" id="color-rojo" value="rojo">
+                            <label for="color-rojo" class="color-cuadro rojo"></label>
+                            <input type="radio" name="fruit-color" id="color-amarillo" value="amarillo">
+                            <label for="color-amarillo" class="color-cuadro amarillo"></label>
+                        </div>
+                    </div>
+                    <div class="grupo-opciones">
+                        <label class="label-grupo">Tamaño:</label>
+                        <div class="opciones-tamano">
+                            <input type="radio" name="fruit-size" id="tamano-grande" value="grande" checked>
+                            <label for="tamano-grande" class="tamano-cuadro grande">Grande</label>
+                            <input type="radio" name="fruit-size" id="tamano-pequeno" value="pequeño">
+                            <label for="tamano-pequeno" class="tamano-cuadro pequeno">Pequeño</label>
+                        </div>
+                    </div>
+                    <button type="submit">Clasificar</button>
+                    <div id="resultado-fruta">
+                        <b>Resultado:</b>
+                    </div>
+                </form>
+            </div>
         </div>
     `;
     const width = 700, height = 320;
@@ -133,8 +144,8 @@ function renderSimpleDecisionTreeDiagram(selectedPath = []) {
     // Formulario de clasificación
     document.getElementById('fruit-form').onsubmit = (e) => {
         e.preventDefault();
-        const color = document.getElementById('fruit-color').value;
-        const size = document.getElementById('fruit-size').value;
+        const color = document.querySelector('input[name="fruit-color"]:checked').value;
+        const size = document.querySelector('input[name="fruit-size"]:checked').value;
         let res, path = ['root'];
         let colorRes = '';
         if (color === 'verde') {
@@ -154,8 +165,8 @@ function renderSimpleDecisionTreeDiagram(selectedPath = []) {
         // Redibujar resaltando el camino
         renderSimpleDecisionTreeDiagram(path);
         // Mantener selección en el formulario
-        document.getElementById('fruit-color').value = color;
-        document.getElementById('fruit-size').value = size;
+        document.querySelector(`input[name='fruit-color'][value='${color}']`).checked = true;
+        document.querySelector(`input[name='fruit-size'][value='${size}']`).checked = true;
     };
 
     // Si hay resultado previo, mostrarlo
@@ -181,6 +192,28 @@ function renderFruitClassifierExample() {
             <div style="background:#eaf1fb;border-radius:8px;padding:0.7em 1em 0.7em 1em;margin-top:0.5em;overflow-x:auto;">
                 <pre style="margin:0;"><code id="codigo-arbol" style="font-size:1em;">// Árbol de decisión simple para frutas\nfunction esComestible(color, tamaño) {\n    if (color === 'verde') return 'Comestible';\n    else if (tamaño === 'grande') return 'No comestible';\n    else return 'Comestible';\n}</code></pre>
             </div>
+            <button id="btn-explicacion-codigo" style="margin-top:1em;background:#4f8cff;color:#fff;border:none;padding:0.5em 1.2em;border-radius:7px;font-weight:600;cursor:pointer;">Ver explicación</button>
+            <div id="explicacion-codigo" class="explicacion-colapsable">
+                <b>¿Cómo funciona el código?</b><br>
+                La función <code>esComestible(color, tamaño)</code> simula un árbol de decisión sencillo:
+                <ul style="margin-top:0.5em;">
+                    <li>Si el color es <b>verde</b>, la fruta siempre es considerada <span style='color:#1a4d1a;background:#b2ffb2;padding:0.1em 0.4em;border-radius:4px;'>comestible</span>.</li>
+                    <li>Si el color no es verde y el tamaño es <b>grande</b>, la fruta es <span style='color:#a80000;background:#ffd6d6;padding:0.1em 0.4em;border-radius:4px;'>no comestible</span>.</li>
+                    <li>En cualquier otro caso, la fruta es <span style='color:#1a4d1a;background:#b2ffb2;padding:0.1em 0.4em;border-radius:4px;'>comestible</span>.</li>
+                </ul>
+                <span style="font-size:0.98em;color:#888;">Este ejemplo muestra cómo un árbol de decisión toma decisiones simples a partir de preguntas sobre los atributos de un objeto.</span>
+            </div>
         </div>
     `;
+    // Mostrar/ocultar explicación con animación
+    const btn = document.getElementById('btn-explicacion-codigo');
+    const exp = document.getElementById('explicacion-codigo');
+    btn.onclick = () => {
+        exp.classList.toggle('explicacion-visible');
+        if (exp.classList.contains('explicacion-visible')) {
+            btn.textContent = 'Ocultar explicación';
+        } else {
+            btn.textContent = 'Ver explicación';
+        }
+    };
 }

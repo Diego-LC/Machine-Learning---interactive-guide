@@ -21,28 +21,30 @@ document.addEventListener('DOMContentLoaded', () => {
 function cargarTeoriaArboles() {
     const div = document.getElementById('teoria-arboles');
     div.innerHTML = `
-        <h3>¿Qué es un Árbol de Decisión?</h3>
-        <p>Un <b>árbol de decisión</b> es un modelo predictivo que utiliza una estructura de árbol para tomar decisiones. Sus componentes principales son:</p>
-        <div class="conceptos-arbol">
-            <div class="concepto-tarjeta" style="--color:#38e4ae;">
-                <div class="icono-concepto"><svg width="32" height="32"><circle cx="16" cy="16" r="13" fill="#38e4ae" stroke="#4f8cff" stroke-width="3"/></svg></div>
-                <div class="titulo-concepto">Nodo</div>
-                <div class="desc-concepto">Punto donde se evalúa una <b>pregunta</b> o atributo.</div>
-            </div>
-            <div class="concepto-tarjeta" style="--color:#4f8cff;">
-                <div class="icono-concepto"><svg width="32" height="32"><path d="M4 16 L28 16" stroke="#4f8cff" stroke-width="4"/><polygon points="28,16 22,12 22,20" fill="#4f8cff"/></svg></div>
-                <div class="titulo-concepto">Rama</div>
-                <div class="desc-concepto">Camino que conecta nodos y representa una posible decisión (<b>Sí</b> o <b>No</b>).</div>
-            </div>
-            <div class="concepto-tarjeta" style="--color:#ffb300;">
-                <div class="icono-concepto"><svg width="32" height="32"><circle cx="16" cy="16" r="13" fill="#fff" stroke="#ffb300" stroke-width="3"/><text x="16" y="22" text-anchor="middle" font-size="18" fill="#ffb300">?</text></svg></div>
-                <div class="titulo-concepto">Decisión</div>
-                <div class="desc-concepto">Resultado de la evaluación en un nodo, que determina la siguiente rama a seguir.</div>
-            </div>
-            <div class="concepto-tarjeta" style="--color:#b2ffb2;">
-                <div class="icono-concepto"><svg width="32" height="32"><rect x="6" y="6" width="20" height="20" rx="7" fill="#b2ffb2" stroke="#1a4d1a" stroke-width="3"/></svg></div>
-                <div class="titulo-concepto">Hoja</div>
-                <div class="desc-concepto">Nodo final que da la <b>predicción</b> o clasificación (<span style="background:#b2ffb2;color:#1a4d1a;padding:0.1em 0.4em;border-radius:4px;">Comestible</span> o <span style="background:#ffd6d6;color:#a80000;padding:0.1em 0.4em;border-radius:4px;">No comestible</span>).</div>
+        <div class="card-teoria">
+            <h3>¿Qué es un Árbol de Decisión?</h3>
+            <p>Un <b>árbol de decisión</b> es un modelo predictivo que utiliza una estructura de árbol para tomar decisiones. Sus componentes principales son:</p>
+            <div class="conceptos-arbol">
+                <div class="concepto-tarjeta" style="--color:#38e4ae;">
+                    <div class="icono-concepto"><svg width="32" height="32"><circle cx="16" cy="16" r="13" fill="#38e4ae" stroke="#4f8cff" stroke-width="3"/></svg></div>
+                    <div class="titulo-concepto">Nodo</div>
+                    <div class="desc-concepto">Punto donde se evalúa una <b>pregunta</b> o atributo.</div>
+                </div>
+                <div class="concepto-tarjeta" style="--color:#4f8cff;">
+                    <div class="icono-concepto"><svg width="32" height="32"><path d="M4 16 L28 16" stroke="#4f8cff" stroke-width="4"/><polygon points="28,16 22,12 22,20" fill="#4f8cff"/></svg></div>
+                    <div class="titulo-concepto">Rama</div>
+                    <div class="desc-concepto">Camino que conecta nodos y representa una posible decisión (<b>Sí</b> o <b>No</b>).</div>
+                </div>
+                <div class="concepto-tarjeta" style="--color:#ffb300;">
+                    <div class="icono-concepto"><svg width="32" height="32"><circle cx="16" cy="16" r="13" fill="#fff" stroke="#ffb300" stroke-width="3"/><text x="16" y="22" text-anchor="middle" font-size="18" fill="#ffb300">?</text></svg></div>
+                    <div class="titulo-concepto">Decisión</div>
+                    <div class="desc-concepto">Resultado de la evaluación en un nodo, que determina la siguiente rama a seguir.</div>
+                </div>
+                <div class="concepto-tarjeta" style="--color:#b2ffb2;">
+                    <div class="icono-concepto"><svg width="32" height="32"><rect x="6" y="6" width="20" height="20" rx="7" fill="#b2ffb2" stroke="#1a4d1a" stroke-width="3"/></svg></div>
+                    <div class="titulo-concepto">Hoja</div>
+                    <div class="desc-concepto">Nodo final que da la <b>predicción</b> o clasificación (<span style="background:#b2ffb2;color:#1a4d1a;padding:0.1em 0.4em;border-radius:4px;">Comestible</span> o <span style="background:#ffd6d6;color:#a80000;padding:0.1em 0.4em;border-radius:4px;">No comestible</span>).</div>
+                </div>
             </div>
         </div>
     `;
@@ -51,14 +53,16 @@ function cargarTeoriaArboles() {
 function cargarTeoriaRL() {
     const div = document.getElementById('teoria-rl');
     div.innerHTML = `
-        <h3>¿Qué es el Reinforcement Learning?</h3>
-        <p>El <b>Aprendizaje por Refuerzo</b> es una técnica donde un <b>agente</b> aprende a tomar decisiones mediante la interacción con un <b>entorno</b>, recibiendo <b>recompensas</b> o penalizaciones según sus acciones. Los conceptos clave son:</p>
-        <ul>
-            <li><b>Agente:</b> El que toma decisiones y aprende.</li>
-            <li><b>Entorno:</b> El mundo con el que interactúa el agente.</li>
-            <li><b>Recompensa:</b> Retroalimentación que indica el éxito de una acción.</li>
-            <li><b>Política:</b> Estrategia que sigue el agente para decidir sus acciones.</li>
-        </ul>
+        <div class="card-teoria">
+            <h3>¿Qué es el Reinforcement Learning?</h3>
+            <p>El <b>Aprendizaje por Refuerzo</b> es una técnica donde un <b>agente</b> aprende a tomar decisiones mediante la interacción con un <b>entorno</b>, recibiendo <b>recompensas</b> o penalizaciones según sus acciones. Los conceptos clave son:</p>
+            <ul>
+                <li><b>Agente:</b> El que toma decisiones y aprende.</li>
+                <li><b>Entorno:</b> El mundo con el que interactúa el agente.</li>
+                <li><b>Recompensa:</b> Retroalimentación que indica el éxito de una acción.</li>
+                <li><b>Política:</b> Estrategia que sigue el agente para decidir sus acciones.</li>
+            </ul>
+        </div>
     `;
 }
 
