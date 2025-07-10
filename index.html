@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprende Machine Learning: Árboles de Decisión y Reinforcement Learning</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="js/main.js"></script>
+    <script defer src="js/decision_tree.js"></script>
+    <script defer src="js/rl.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <header class="modern-header">
+        <div class="header-bg"></div>
+        <div class="header-content">
+            <h1><span class="ml-gradient">Aprende Machine Learning</span></h1>
+            <h2>Árboles de Decisión y Reinforcement Learning</h2>
+            <p class="autor">Autor: <b>[Tu Nombre]</b></p>
+            <p class="intro">Descubre de forma interactiva dos técnicas fundamentales de Machine Learning, sin necesidad de conocimientos previos.</p>
+        </div>
+    </header>
+    <main>
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="arboles">Árboles de Decisión</button>
+            <button class="tab-btn" data-tab="rl">Reinforcement Learning</button>
+            <button class="tab-btn" data-tab="conclusiones">Conclusiones</button>
+            <button class="tab-btn" data-tab="referencias">Referencias</button>
+        </div>
+        <section id="arboles" class="tab-content active">
+            <h2>Árboles de Decisión</h2>
+            <div class="teoria" id="teoria-arboles"></div>
+            <div class="interactivo" id="diagrama-arbol"></div>
+            <div class="ejemplo" id="ejemplo-arbol"></div>
+        </section>
+        <section id="rl" class="tab-content">
+            <h2>Reinforcement Learning (Aprendizaje por Refuerzo)</h2>
+            <div class="teoria" id="teoria-rl"></div>
+            <div class="interactivo" id="visualizacion-rl"></div>
+            <div class="ejemplo" id="ejemplo-rl"></div>
+        </section>
+        <section id="conclusiones" class="tab-content">
+            <h2>Conclusiones y Comparativa</h2>
+            <div id="comparativa"></div>
+        </section>
+        <section id="referencias" class="tab-content">
+            <h2>Referencias y Recursos</h2>
+            <ul id="lista-referencias"></ul>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 <b>[Tu Nombre]</b>. Proyecto educativo.</p>
+    </footer>
+</body>
+</html>
