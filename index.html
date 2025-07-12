@@ -11,22 +11,76 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 <body>
-    <header class="modern-header">
-        <div class="header-bg"></div>
-        <div class="header-content">
-            <h1><span class="ml-gradient">Aprende Machine Learning</span></h1>
-            <h2>Árboles de Decisión y Reinforcement Learning</h2>
-            <p class="autor">Autor: <b>Diego Labrin</b></p>
-            <p class="intro">Descubre de forma interactiva dos técnicas fundamentales de Machine Learning, sin necesidad de conocimientos previos.</p>
+    <nav class="navbar-fixed modern-navbar">
+        <div class="navbar-content">
+            <span class="navbar-logo"><span class="navbar-icon">🧠</span> ML Interactivo</span>
+            <ul class="navbar-links">
+                <li><a href="#inicio" class="navbar-link" data-tab="inicio">Inicio</a></li>
+                <li><a href="#arboles" class="navbar-link" data-tab="arboles">Árboles de Decisión</a></li>
+                <li><a href="#rl" class="navbar-link" data-tab="rl">Aprendizaje por Refuerzo</a></li>
+                <li><a href="#conclusiones" class="navbar-link" data-tab="conclusiones">Conclusiones</a></li>
+            </ul>
         </div>
-    </header>
+    </nav>
+    <!-- Header eliminado, ahora sección de inicio -->
     <main>
-        <div class="tabs">
-            <button class="tab-btn active" data-tab="arboles">Árboles de Decisión</button>
-            <button class="tab-btn" data-tab="rl">Reinforcement Learning</button>
-            <button class="tab-btn" data-tab="conclusiones">Conclusiones</button>
-            <button class="tab-btn" data-tab="referencias">Referencias</button>
-        </div>
+        <!-- Sistema de tabs eliminado, navegación ahora con la barra superior -->
+        <section id="inicio" class="tab-content">
+            <div class="inicio-hero modern-hero">
+                <div class="inicio-hero-icon"><span>🧠</span></div>
+                <h1 class="modern-title">Machine Learning Interactivo</h1>
+                <p class="modern-desc">Descubre el fascinante mundo del Machine Learning a través de visualizaciones interactivas y ejemplos prácticos. Aprende sobre Árboles de Decisión y Reinforcement Learning de forma intuitiva.</p>
+                <div class="modern-author"><span>👤</span> Desarrollado por: <b>Diego Labrin</b></div>
+            </div>
+            <div class="inicio-info modern-info">
+                <div class="modern-card">
+                    <h3 class="modern-card-title"><span>📘</span> ¿Qué es Machine Learning?</h3>
+                    <p class="modern-card-desc">El <b>Machine Learning</b> es una rama de la inteligencia artificial que permite a las máquinas aprender y tomar decisiones a partir de datos, sin ser programadas explícitamente para cada tarea específica.</p>
+                    <div class="modern-card-row">
+                        <div class="modern-card-box">
+                            <b>Aprendizaje Supervisado</b>
+                            <span>Aprende de ejemplos etiquetados para hacer predicciones sobre nuevos datos.</span>
+                            <a href="#arboles" class="modern-card-btn" data-tab="arboles">Ir a Árboles de Decisión</a>
+                        </div>
+                        <div class="modern-card-box">
+                            <b>Aprendizaje por Refuerzo</b>
+                            <span>Aprende a través de la interacción con el entorno y las recompensas obtenidas.</span>
+                            <a href="#rl" class="modern-card-btn" data-tab="rl">Ir a Aprendizaje por refuerzo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+</head>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Funcionalidad de navegación: mostrar sección activa
+    function showTab(tab) {
+        document.querySelectorAll('.tab-content').forEach(sec => {
+            sec.classList.remove('active');
+        });
+        const section = document.getElementById(tab);
+        if (section) section.classList.add('active');
+    }
+    // Detectar click en navbar y botones de inicio/tarjeta
+    document.querySelectorAll('.navbar-link, .inicio-btn, .modern-card-btn').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const tab = this.getAttribute('data-tab');
+            if (!tab) return;
+            showTab(tab);
+            // Actualizar estado visual en navbar
+            document.querySelectorAll('.navbar-link').forEach(l => l.classList.remove('active'));
+            const navLink = document.querySelector('.navbar-link[data-tab="'+tab+'"]');
+            if (navLink) navLink.classList.add('active');
+            window.scrollTo({top:0, behavior:'smooth'});
+        });
+    });
+    // Activar sección inicial
+    showTab('inicio');
+    document.querySelector('.navbar-link[data-tab="inicio"]').classList.add('active');
+});
+</script>
         <section id="arboles" class="tab-content active">
             <h2>Árboles de Decisión</h2>
             <div class="teoria" id="teoria-arboles"></div>
@@ -34,14 +88,152 @@
             <div class="ejemplo" id="ejemplo-arbol"></div>
         </section>
         <section id="rl" class="tab-content">
-            <h2>Reinforcement Learning (Aprendizaje por Refuerzo)</h2>
-            <div class="teoria" id="teoria-rl"></div>
-            <div class="interactivo" id="visualizacion-rl"></div>
-            <div class="ejemplo" id="ejemplo-rl"></div>
+            <div class="rl-hero">
+                <div class="rl-hero-icon" style="background:#f3eaff;color:#7c4dff;display:inline-block;border-radius:50%;padding:0.2em 0.5em;font-size:2em;margin-bottom:0.3em;">❗</div>
+                <h2 class="rl-title">¿Qué es el Reinforcement Learning?</h2>
+                <p class="rl-desc">El aprendizaje por refuerzo permite que un agente aprenda a tomar decisiones óptimas a través de la interacción con su entorno y las recompensas que recibe.</p>
+            </div>
+            <div class="rl-conceptos">
+                <h3 class="rl-conceptos-title"><span style="font-size:1.3em;margin-right:0.3em;">ℹ️</span> Conceptos Fundamentales</h3>
+                <div class="rl-conceptos-row">
+                    <div class="rl-concepto-card rl-concepto-agente">
+                        <span class="rl-concepto-icon" style="color:#4f8cff;">🤖</span>
+                        <b>Agente</b>
+                        <p>La entidad que aprende y toma decisiones. En nuestro ejemplo, es el robot azul que navega por el laberinto.</p>
+                    </div>
+                    <div class="rl-concepto-card rl-concepto-recompensa">
+                        <span class="rl-concepto-icon" style="color:#ffb300;">🎯</span>
+                        <b>Recompensas</b>
+                        <p>Señales que indican qué tan buena fue una acción. +100 por llegar al objetivo, -100 por obstáculos.</p>
+                    </div>
+                    <div class="rl-concepto-card rl-concepto-entorno">
+                        <span class="rl-concepto-icon" style="color:#38e4ae;">🌍</span>
+                        <b>Entorno</b>
+                        <p>El mundo en el que opera el agente. Incluye el grid, obstáculos y el objetivo.</p>
+                    </div>
+                    <div class="rl-concepto-card rl-concepto-politica">
+                        <span class="rl-concepto-icon" style="color:#7c4dff;">🧭</span>
+                        <b>Política</b>
+                        <p>La estrategia que sigue el agente para decidir qué acción tomar en cada estado.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="interactivo card-diagrama" id="visualizacion-rl"></div>
+            <div class="ejemplo card-ejemplo" id="ejemplo-rl"></div>
         </section>
         <section id="conclusiones" class="tab-content">
-            <h2>Conclusiones y Comparativa</h2>
-            <div id="comparativa"></div>
+            <h2 class="comparativa-title">Comparativa y Conclusiones</h2>
+            <div class="comparativa-header">
+                <span class="comparativa-icon" style="background:#d6f7f2;color:#38e4ae;">🌲</span>
+                <span class="comparativa-icon" style="background:#f3eaff;color:#7c4dff;">🎯</span>
+            </div>
+            <p class="comparativa-desc">Análisis comparativo entre Árboles de Decisión y Aprendizaje por Refuerzo, sus aplicaciones y recomendaciones de uso.</p>
+            <div class="comparativa-cards">
+                <div class="comparativa-card arboles">
+                    <h3><span class="comparativa-card-icon">🌲</span> Árboles de Decisión</h3>
+                    <span class="comparativa-sub">Aprendizaje Supervisado</span>
+                    <ul class="comparativa-list">
+                        <li class="comparativa-list-ok"><b>Interpretabilidad Máxima</b><br><span>Fácil de entender y explicar a no expertos</span></li>
+                        <li class="comparativa-list-ok"><b>Entrenamiento Rápido</b><br><span>Algoritmos eficientes para datasets grandes</span></li>
+                        <li class="comparativa-list-ok"><b>Manejo de Datos Mixtos</b><br><span>Categóricos y numéricos sin preparación</span></li>
+                        <li class="comparativa-list-bad"><b>Propenso al Sobreajuste</b><br><span>Puede memorizar datos de entrenamiento</span></li>
+                        <li class="comparativa-list-bad"><b>Inestabilidad</b><br><span>Pequeños cambios pueden alterar el árbol</span></li>
+                    </ul>
+                </div>
+                <div class="comparativa-card rl">
+                    <h3><span class="comparativa-card-icon">🎯</span> Aprendizaje por Refuerzo</h3>
+                    <span class="comparativa-sub">Aprendizaje por Refuerzo</span>
+                    <ul class="comparativa-list">
+                        <li class="comparativa-list-ok"><b>Aprendizaje Autónomo</b><br><span>No requiere datos etiquetados previos</span></li>
+                        <li class="comparativa-list-ok"><b>Adaptación Continua</b><br><span>Mejora con la experiencia y nuevos datos</span></li>
+                        <li class="comparativa-list-ok"><b>Decisiones Secuenciales</b><br><span>Optimiza estrategias a largo plazo</span></li>
+                        <li class="comparativa-list-bad"><b>Entrenamiento Lento</b><br><span>Requiere muchas iteraciones para converger</span></li>
+                        <li class="comparativa-list-bad"><b>Menos Interpretable</b><br><span>Difícil explicar decisiones específicas</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="aplicaciones-mundo-real">
+                <h3 class="aplicaciones-title">💡 Aplicaciones en el Mundo Real</h3>
+                <div class="aplicaciones-row">
+                    <div class="aplicaciones-col arboles">
+                        <h4 class="aplicaciones-col-title" style="color:#38e4ae">🌲 Árboles de Decisión</h4>
+                        <ul>
+                            <li><b>🩺 Diagnóstico Médico</b><br><span>Sistemas de apoyo al diagnóstico que pueden explicar su razonamiento a los médicos</span></li>
+                            <li><b>💳 Aprobación de Créditos</b><br><span>Evaluación de riesgo crediticio con criterios transparentes y auditables</span></li>
+                            <li><b>🎯 Marketing Dirigido</b><br><span>Segmentación de clientes basada en características demográficas y de comportamiento</span></li>
+                        </ul>
+                    </div>
+                    <div class="aplicaciones-col rl">
+                        <h4 class="aplicaciones-col-title" style="color:#7c4dff">🎯 Aprendizaje por Refuerzo</h4>
+                        <ul>
+                            <li><b>🎮 Videojuegos</b><br><span>AlphaGo, OpenAI Five - agentes que superan a jugadores humanos expertos</span></li>
+                            <li><b>🚗 Vehículos Autónomos</b><br><span>Navegación y toma de decisiones en tiempo real en entornos complejos</span></li>
+                            <li><b>💹 Trading Algorítmico</b><br><span>Optimización de estrategias de inversión adaptándose a condiciones del mercado</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="recomendaciones-aprendizaje">
+                <h3 class="recomendaciones-title">📘 Recomendaciones para el Aprendizaje</h3>
+                <div class="recomendaciones-row">
+                    <div class="recomendaciones-col">
+                        <b>Para Principiantes:</b>
+                        <ul>
+                            <li>Comienza con <b>Árboles de Decisión</b> para entender conceptos básicos</li>
+                            <li>Practica con datasets simples como Iris o Titanic</li>
+                            <li>Enfócate en interpretar y visualizar los resultados</li>
+                            <li>Experimenta con diferentes profundidades del árbol</li>
+                        </ul>
+                    </div>
+                    <div class="recomendaciones-col">
+                        <b>Para Nivel Intermedio:</b>
+                        <ul>
+                            <li>Explora <b>Aprendizaje por Refuerzo</b> con entornos simples</li>
+                            <li>Implementa Q-Learning desde cero</li>
+                            <li>Experimenta con diferentes hiperparámetros</li>
+                            <li>Compara ambos enfoques en problemas similares</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="recomendaciones-clave">
+                    <span>💡 Consejo Clave:</span> No existe una técnica universalmente mejor. La elección depende del problema específico, los datos disponibles, los recursos computacionales y los requisitos de interpretabilidad. <b style="color:#4f8cff">Experimenta con ambas técnicas</b> para desarrollar intuición sobre cuándo usar cada una.
+                </div>
+            </div>
+            <div class="referencias-adicionales">
+                <h3 class="referencias-title">📚 Referencias y Recursos Adicionales</h3>
+                <div class="referencias-row">
+                    <div class="referencias-col arboles">
+                        <b>Árboles de Decisión:</b>
+                        <ul>
+                            <li><a href="https://www.ibm.com/es-es/think/topics/decision-trees" target="_blank">"¿Qué es un árbol de decisión?" - IBM</a></li>
+                            <li><a href="https://www.unir.net/revista/ingenieria/arboles-de-decision/" target="_blank">Árboles de decisión: en qué consisten y aplicación en Big Data - UNIR</a></li>
+                            <li><a href="https://4geeks.com/es/interactive-coding-tutorial/tutorial-del-proyecto-arbol-de-decision" target="_blank">"Tutorial del Proyecto Árbol de Decisión</a></li>
+                            <li><a href="https://web.stanford.edu/~hastie/ElemStatLearn/" target="_blank">"The Elements of Statistical Learning" - Hastie, Tibshirani, Friedman</a></li>
+                            <li><a href="https://scikit-learn.org/stable/modules/tree.html" target="_blank">Scikit-learn Documentation - Decision Trees</a></li>
+                            <li><a href="https://www.kaggle.com/learn/intro-to-machine-learning" target="_blank">Kaggle Learn – Intro to Machine Learning</a></li>
+                        </ul>
+                    </div>
+                    <div class="referencias-col rl">
+                        <b>Aprendizaje por Refuerzo:</b>
+                        <ul>
+                            <li><a href="https://es.wikipedia.org/wiki/Aprendizaje_por_refuerzo" target="_blank">Aprendizaje por refuerzo - WikiPedia</a></li>
+                            <li><a href="https://www.ibm.com/es-es/think/topics/reinforcement-learning" target="_blank">"¿Qué es el aprendizaje de refuerzo?" - IBM</a></li>
+                            <li><a href="https://deepreinforcementlearningbook.org/" target="_blank">"Deep Reinforcement Learning" – Pieter Abbeel (UC Berkeley)</a></li>
+                            <li><a href="https://medium.com/aprendizaje-por-refuerzo-introducci%C3%B3n-al-mundo-del/aprendizaje-por-refuerzo-introducci%C3%B3n-al-mundo-del-rl-1fcfbaa1c87" target="_blank">Aprendizaje por Refuerzo: Introducción al mundo del RL - Medium</a></li>
+                            <li><a href="http://incompleteideas.net/book/the-book-2nd.html" target="_blank">"Reinforcement Learning: An Introduction" - Sutton & Barto</a></li>
+                            <li><a href="https://deepreinforcementlearningbook.org/" target="_blank">"Deep Reinforcement Learning" – Pieter Abbeel (UC Berkeley)</a></li>
+                            <li><a href="https://github.com/DLR-RM/stable-baselines3" target="_blank">Stable Baselines3 – Implementaciones de algoritmos</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="conclusion-final">
+                <h3 class="conclusion-final-title">🎓 Conclusión</h3>
+                <p class="conclusion-final-desc">
+                    Tanto los <b>Árboles de Decisión</b> como el <b>Aprendizaje por Refuerzo</b> son herramientas poderosas en el arsenal del Machine Learning. Los árboles destacan por su simplicidad e interpretabilidad, mientras que RL brilla en problemas de decisión secuencial y optimización. Dominar ambas técnicas te dará una base sólida para abordar una amplia variedad de problemas de inteligencia artificial.
+                </p>
+                <div class="conclusion-final-highlight">¡Sigue explorando y experimentando! 🚀</div>
+            </div>
         </section>
         <section id="referencias" class="tab-content">
             <h2>Referencias y Recursos</h2>
