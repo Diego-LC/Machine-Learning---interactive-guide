@@ -23,7 +23,7 @@ function cargarTeoriaArboles() {
     div.innerHTML = `
         <div class="card-teoria">
             <h3>¿Qué es un Árbol de Decisión?</h3>
-            <p>Un <b>árbol de decisión</b> es un modelo predictivo que utiliza una estructura de árbol para tomar decisiones. Sus componentes principales son:</p>
+            <p>Un <b>árbol de decisión</b> es un modelo predictivo <b>supervisado</b> que utiliza una estructura de árbol para tomar decisiones. Sus componentes principales son:</p>
             <div class="conceptos-arbol">
                 <div class="concepto-tarjeta" style="--color:#38e4ae;">
                     <div class="icono-concepto"><svg width="32" height="32"><circle cx="16" cy="16" r="13" fill="#38e4ae" stroke="#4f8cff" stroke-width="3"/></svg></div>
@@ -55,13 +55,29 @@ function cargarTeoriaRL() {
     div.innerHTML = `
         <div class="card-teoria">
             <h3>¿Qué es el Reinforcement Learning?</h3>
-            <p>El <b>Aprendizaje por Refuerzo</b> es una técnica donde un <b>agente</b> aprende a tomar decisiones mediante la interacción con un <b>entorno</b>, recibiendo <b>recompensas</b> o penalizaciones según sus acciones. Los conceptos clave son:</p>
-            <ul>
-                <li><b>Agente:</b> El que toma decisiones y aprende.</li>
-                <li><b>Entorno:</b> El mundo con el que interactúa el agente.</li>
-                <li><b>Recompensa:</b> Retroalimentación que indica el éxito de una acción.</li>
-                <li><b>Política:</b> Estrategia que sigue el agente para decidir sus acciones.</li>
-            </ul>
+            <p>El <b>Aprendizaje por Refuerzo</b> es una técnica <b>no supervisada</b> donde un <b>agente</b> aprende a tomar decisiones mediante la interacción con un <b>entorno</b>, recibiendo <b>recompensas</b> o penalizaciones según sus acciones.</p>
+            <div class="conceptos-arbol" style="justify-content: flex-start;">
+                <div class="concepto-tarjeta" style="--color:#4f8cff;min-width:170px;max-width:220px;">
+                    <div class="icono-concepto"><svg width="32" height="32"><circle cx="16" cy="16" r="13" fill="#4f8cff" stroke="#38e4ae" stroke-width="3"/></svg></div>
+                    <div class="titulo-concepto">Agente</div>
+                    <div class="desc-concepto">El que <b>toma decisiones</b> y aprende a partir de la experiencia.</div>
+                </div>
+                <div class="concepto-tarjeta" style="--color:#38e4ae;min-width:170px;max-width:220px;">
+                    <div class="icono-concepto"><svg width="32" height="32"><rect x="6" y="6" width="20" height="20" rx="7" fill="#38e4ae" stroke="#4f8cff" stroke-width="3"/></svg></div>
+                    <div class="titulo-concepto">Entorno</div>
+                    <div class="desc-concepto">El <b>mundo</b> con el que interactúa el agente y donde ocurren las acciones.</div>
+                </div>
+                <div class="concepto-tarjeta" style="--color:#ffb300;min-width:170px;max-width:220px;">
+                    <div class="icono-concepto"><svg width="32" height="32"><polygon points="16,4 28,28 4,28" fill="#ffb300" stroke="#4f8cff" stroke-width="2"/></svg></div>
+                    <div class="titulo-concepto">Recompensa</div>
+                    <div class="desc-concepto">Retroalimentación que indica el <b>éxito</b> o fracaso de una acción.</div>
+                </div>
+                <div class="concepto-tarjeta" style="--color:#b2ffb2;min-width:170px;max-width:220px;">
+                    <div class="icono-concepto"><svg width="32" height="32"><path d="M8 24 Q16 8 24 24" stroke="#38e4ae" stroke-width="3" fill="none"/><circle cx="8" cy="24" r="3" fill="#b2ffb2"/><circle cx="24" cy="24" r="3" fill="#b2ffb2"/></svg></div>
+                    <div class="titulo-concepto">Política</div>
+                    <div class="desc-concepto">Estrategia que sigue el agente para <b>decidir sus acciones</b>.</div>
+                </div>
+            </div>
         </div>
     `;
 }
