@@ -98,10 +98,10 @@ function cargarComparativa() {
 function cargarReferencias() {
     const ul = document.getElementById('lista-referencias');
     ul.innerHTML = `
-        <li><a href="https://es.wikipedia.org/wiki/%C3%81rbol_de_decisi%C3%B3n" target="_blank">Árbol de decisión - Wikipedia</a></li>
-        <li><a href="https://es.wikipedia.org/wiki/Aprendizaje_por_refuerzo" target="_blank">Aprendizaje por refuerzo - Wikipedia</a></li>
-        <li><a href="https://scikit-learn.org/stable/modules/tree.html" target="_blank">Scikit-learn: Árboles de Decisión</a></li>
-        <li><a href="https://spinningup.openai.com/es/latest/" target="_blank">OpenAI Spinning Up: RL</a></li>
-        <li><a href="https://www.youtube.com/watch?v=Ev8YbxPu_bQ" target="_blank">Video: Decision Trees & RL (StatQuest)</a></li>
+        <li><a href="https://es.wikipedia.org/wiki/%C3%81rbol_de_decisi%C3%B3n" target="_blank" rel="noopener">Árbol de decisión - Wikipedia</a></li>
+        <li><a href="https://es.wikipedia.org/wiki/Aprendizaje_por_refuerzo" target="_blank" rel="noopener">Aprendizaje por refuerzo - Wikipedia</a></li>
+        <li><a href="https://scikit-learn.org/stable/modules/tree.html" target="_blank" rel="noopener">Scikit-learn: Árboles de Decisión</a></li>
+        <li><a href="https://spinningup.openai.com/es/latest/" target="_blank" rel="noopener">OpenAI Spinning Up: RL</a></li>
+        <li><a href="https://www.youtube.com/watch?v=Ev8YbxPu_bQ" target="_blank" rel="noopener">Video: Decision Trees & RL (StatQuest)</a></li>
     `;
 }
