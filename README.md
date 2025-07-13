@@ -2,6 +2,8 @@
 
 Este proyecto es una página web interactiva y educativa que explica de forma visual y sencilla dos técnicas fundamentales de Machine Learning: Árboles de Decisión y Reinforcement Learning (Aprendizaje por Refuerzo).
 
+- Web desplegada con github pages: [ML - guía interactiva](https://diego-lc.github.io/Machine-Learning---interactive-guide/)
+
 ## Estructura del Proyecto
 
 - `index.html`: Página principal con todas las secciones.
@@ -34,9 +36,6 @@ Este proyecto es una página web interactiva y educativa que explica de forma vi
 
 - [Árbol de decisión - Wikipedia](https://es.wikipedia.org/wiki/%C3%81rbol_de_decisi%C3%B3n)
 - [Aprendizaje por refuerzo - Wikipedia](https://es.wikipedia.org/wiki/Aprendizaje_por_refuerzo)
-- [Scikit-learn: Árboles de Decisión](https://scikit-learn.org/stable/modules/tree.html)
-- [OpenAI Spinning Up: RL](https://spinningup.openai.com/es/latest/)
-- [Video: Decision Trees & RL (StatQuest)](https://www.youtube.com/watch?v=Ev8YbxPu_bQ)
 
 ---
 
